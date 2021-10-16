@@ -11,7 +11,7 @@ const mailerConfig={
     USER:'roopvilla210ddp@gmail.com'
 }
 
-const OAuth2_client = new OAuth2(mailerConfig.CLIENT_ID,mailerConfig.CLIENT_SECRET)
+const OAuth2_client = new OAuth2(mailerConfig.CLIENT_ID,mailerConfig.CLIENT_SECRET, "https://developers.google.com/oauthplayground")
 OAuth2_client.setCredentials({refresh_token:mailerConfig.REFRESH_TOKEN})
 
 const sendMail= (mailData,response)=>{
@@ -27,6 +27,9 @@ const sendMail= (mailData,response)=>{
             refreshToken: mailerConfig.REFRESH_TOKEN,
             accessToken: accessToken
         },
+        tls: {
+            rejectUnauthorized: false
+          }
     })
 
     const mailOptions ={

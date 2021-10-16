@@ -34,6 +34,7 @@ const auth = async (req, res, next) => {
     }
     catch (e)
     {
+        if(e instanceof jwt.TokenExpiredError) {res.status(401).send({error: "Token Expired"})}
         ErrorHandler.handleError(e,res)
     }
 }

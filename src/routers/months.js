@@ -104,9 +104,18 @@ router.get('/months/expenses', MiddleWare.auth, async (req, res)=>{
 
 })
 
-router.get('/months/available', MiddleWare.auth, async(req,res)=>{
+router.get('/months/availableByYear/:year', MiddleWare.auth, async(req,res)=>{
     try{
-        res.send(await MonthlyData.getUniqueMonthAndYear())
+        res.send(await MonthlyData.getUniqueMonthByYear(req.params.year))
+    }
+    catch(e){
+        ErrorHandler.handleError(e,res)
+    }
+})
+
+router.get('/months/yearsAvailable', MiddleWare.auth, async(req,res)=>{
+    try{
+        res.send(await MonthlyData.getUniqueYear())
     }
     catch(e){
         ErrorHandler.handleError(e,res)

@@ -28,7 +28,8 @@ app.use(
         secret:process.env.SESSION_SECRET,
         resave:false,
         saveUninitialized:false,
-        store: store
+        store: store,
+        maxAge: Date.now() + (3600 * 1000)
     })
 )
 
@@ -41,7 +42,7 @@ app.use(mailRouter)
 app.use(userRouter)
 
 app.use((req, res, next) => {
-    res.status(404).send()//.render('404', { pageTitle: 'Page Not Found' });
+    res.status(404).send({ pageTitle: 'Page Not Found' })//.render('404', { pageTitle: 'Page Not Found' });
 });
 
 app.listen(port, () => {

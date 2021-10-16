@@ -77,6 +77,11 @@ userSchema.methods.removeToken=async function(token){
   this.save()
 }
 
+userSchema.methods.removeAllToken=async function(){
+  this.TOKENS = []
+  this.save()
+}
+
 
 userSchema.pre('save', async function (next) {
 

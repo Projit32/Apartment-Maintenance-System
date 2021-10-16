@@ -7,7 +7,7 @@ const MiddleWare = require('../middleware/auth')
 
 const router = new express.Router()
 
-router.post("/mails/testMail", MiddleWare.auth, async(req, res)=>{
+router.post("/mails/SendEstimatesMail", MiddleWare.auth, async(req, res)=>{
     try{
         const expData = await LedgerData.getMonthlyLedgerData(req.body.month,req.body.year)
         const userData = await UserData.getUserByFlat(req.body.flatNum)

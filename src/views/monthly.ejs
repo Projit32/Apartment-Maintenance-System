@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monthly Data - Roopvilla Project</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+    <!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .responsive {
+        width: 100%;
+        height: auto;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .div-alignments{
+        width: 80%; margin:0 auto;
+      }
+
+    </style>
+    
+
+    <link href="features.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Roopvilla Project</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Monthly Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/stats">Statistics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mailer">Mailer</a>
+        </ul>
+        <div class="d-flex">
+          <span class="nav-link nav-item" style="font-weight: bold;">Welcome, <%= user.OWNER_NAME%></span>
+          <button id="logout" class="btn btn-outline-success nav-item">Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Monthly Data</h1>
+      <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+      Select the Month : <select class="js-example-basic-single btn" id="availableMonths" name="month" style="width: 25%;"></select><br><br>
+      <button class="btn btn-primary btn-lg" type="button" id="FetchDetails">Load Data</button>
+    </div>
+  </div>
+
+  <!--TEXT-->
+  <figure class="text-center">
+    <blockquote class="blockquote">
+      <p>Flat-wise Data</p>
+    </blockquote>
+  </figure>
+
+  <div class="accordion div-alignments" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Accordion Item #1
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Accordion Item #2
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Accordion Item #3
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Accordion Item #4
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <figure class="text-center">
+    <blockquote class="blockquote">
+      <p>Owner-wise Data</p>
+    </blockquote>
+  </figure>
+
+  <div class="div-alignments">
+    <table class="table">
+      <tr>
+        <td class="table-primary">...</td>
+        <td class="table-secondary">...</td>
+        <td class="table-success">...</td>
+        <td class="table-danger">...</td>
+        <td class="table-warning">...</td>
+        <td class="table-info">...</td>
+        <td class="table-light">...</td>
+        <td class="table-dark">...</td>
+      </tr>
+    </table>
+  </div>
+
+  
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p>&copy; 2021 Roopvilla Project</p>
+    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+  </footer>
+</main>
+
+
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function getMonthFromString(mon){
+          return new Date(Date.parse(mon +" 1, 2012")).getMonth()+1
+        }
+
+        function clientCallGET(url, onSuccess){
+          const client = new XMLHttpRequest();
+          client.onload=function(){
+            if (this.status == 200) {
+                onSuccess(JSON.parse(this.responseText))
+            }
+            else{
+                console.error({
+                    code : this.status,
+                    details : JSON.parse(this.responseText)
+                })
+            }
+          };
+          client.open("GET", url);
+          client.send();
+        }
+
+
+        $(function(){
+
+          const availableDataClient = new XMLHttpRequest();
+          availableDataClient.onload= function(){
+            const response =JSON.parse(this.responseText);
+            if(this.status == 200)
+            {
+              const results=[];
+              let crt=0
+              response.months.forEach(element => {
+                results.push({
+                  "id": crt,
+                  "text": element
+                });
+                crt++;
+              });
+              $('#availableMonths').select2({
+                data: results
+              });       
+            }
+            else{
+                    console.error({
+                        code : this.status,
+                        details : response.months
+                    })
+                }
+          };
+          availableDataClient.open("GET", "/months/availableByYear/"+new Date().getFullYear());
+          availableDataClient.send();
+
+
+
+          $('#FetchDetails').click(function(event){
+            //Get Month
+            const month = $('#availableMonths').find(':selected')[0].innerHTML;
+            const monthNumber = getMonthFromString(month);
+
+            //call for get estimates
+            clientCallGET("/months/estimates?monthNumber="+monthNumber+"&year="+new Date().getFullYear(), function(response){
+              console.log("Estimates :",response);
+            })
+
+            //call for get expenses
+            clientCallGET("/months/expenses?monthNumber="+monthNumber+"&year="+new Date().getFullYear(), function(response){
+              console.log("Expenses :",response);
+            })
+
+            //call for flatwise data
+            clientCallGET("/months/flatwiseData?monthNumber="+monthNumber+"&year="+new Date().getFullYear(), function(response){
+              console.log("FlatWise :",response);
+            })
+
+            //call for ownerwise data
+            clientCallGET("/months/ownerWiseData?monthNumber="+monthNumber+"&year="+new Date().getFullYear(), function(response){
+              console.log("OwnerWise :",response);
+            })
+
+          });
+          
+          
+          $('#logout').click(function(event){
+                const client = new XMLHttpRequest();
+                client.onload = function (){
+                        if (this.status == 204) {
+                            window.location="/"
+                        }
+                        else{
+                            console.error({
+                                code : this.status,
+                                details : JSON.parse(this.responseText)
+                            })
+                        }
+                    }
+                client.open("DELETE", "/users/logout",true);
+                client.send();
+                event.preventDefault();
+            });
+        });
+
+        
+    </script>
+
+      
+  </body>
+</html>

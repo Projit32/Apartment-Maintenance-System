@@ -1,11 +1,241 @@
-<!DOCTYPE html>
-<html>
-    <head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Roopvilla Project</title>
 
-    </head>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
 
-    <body>
-        <h1><%= title %></h1>
 
-    </body>
+    <!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .responsive {
+        width: 100%;
+        height: auto;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Roopvilla Project</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/monthly">Monthly Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/stats">Statistics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mailer">Mailer</a>
+        </ul>
+        <div class="d-flex">
+          <span class="nav-link nav-item" style="font-weight: bold;">Welcome, <%= user.OWNER_NAME%></span>
+          <button id="logout" class="btn btn-outline-success nav-item">Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="background-image: url('https://i.pinimg.com/originals/30/45/12/304512deb5caefbf2857c01acb5d5e56.jpg'); background-size:100% 100%;  background-position: center;
+  background-repeat: no-repeat;">
+
+        <div class="container">
+          <div class="carousel-caption text-start" >
+            <h1>Example headline.</h1>
+            <p>Some representative placeholder content for the first slide of the carousel.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="carousel-item" style="background-image: url('https://i.pinimg.com/originals/f8/e8/d9/f8e8d9a9f1e26b087cceb94d36e96d88.jpg'); background-size:100% 100%;  background-position: center;
+  background-repeat: no-repeat;">
+
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Another example headline.</h1>
+            <p>Some representative placeholder content for the second slide of the carousel.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="carousel-item" style="background-image: url('https://d1hr1zgkeel0t6.cloudfront.net/media/apartments_media/082e6bb8-d65c-4319-aed9-3_10863939609.jpg'); background-size:100% 100%;  background-position: center;
+  background-repeat: no-repeat;">
+
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>One more for good measure.</h1>
+            <p>Some representative placeholder content for the third slide of this carousel.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="project-launch.png" height="140" width="110"/></svg>
+
+        <h2>We're Finally Live</h2>
+        <p>Roopvilla Maintenance Project is finally live to give the occupants some insighful details of the maintenance structure.</p>
+      </div><!-- /.col-lg-4 -->
+
+
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="automation.png" height="130" width="140"/></svg>
+
+        <h2>We're Completely Automated</h2>
+        <p>The entire maintanence system is fully automated with latest technology offered by the web development inductry, this minimum human needed for completing a task and reducing the risk of error, and also providing an opportunity to expand the capabilities and scalibility of this system</p>
+      </div><!-- /.col-lg-4 -->
+
+
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="winner.png" height="140" width="140"/></svg>
+
+        <h2>Built by the Members, For the Members</h2>
+        <p>The members of the apartment are the foundation of this maintenance project. We collectively take decision and the set the direction of our system, collectively.</p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Our system believes in <span class="text-muted">Complete Equality.</span></h2>
+        <p class="lead">Big flat doesn't means high maintenance, that's sizeism. We believe in equality, and hence, we pay equaly. No less. No more.</p>
+        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="balance.png" height="500" width="500" class="responsive"/></svg>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">We're <span class="text-muted">Completely Transparent.</span></h2>
+        <p class="lead">Memebers have the complete right to view and report what are paying for. There are no hidden expenditures or back door transactions. We aim to provide information with authenticity and integrety.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="transparency.png" height="250" width="250" class="responsive"/></svg>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">And lastly, we're <span class="text-muted">built by the Members, For the Members.</span></h2>
+        <p class="lead">The members of the apartment are the foundation of this maintenance project. We collectively take decision and the set the direction of our system, collectively.</p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="winner.png" height="300" width="300" class="responsive"/></svg>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2021 Roopvilla Project</p>
+    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+  </footer>
+</main>
+
+
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function(){
+            $('#logout').click(function(event){
+                const client = new XMLHttpRequest();
+                client.onload = function (){
+                        if (this.status == 204) {
+                            window.location="/"
+                        }
+                        else{
+                            console.error({
+                                code : this.status,
+                                details : JSON.parse(this.responseText)
+                            })
+                        }
+                    }
+                client.open("DELETE", "/users/logout",true);
+                client.send();
+                event.preventDefault();
+            });
+        });
+    </script>
+
+      
+  </body>
 </html>

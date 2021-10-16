@@ -29,16 +29,27 @@ router.post("/users/login", async(req, res)=>{
     try{
         const user = await User.findByCredentials(req.body.email, req.body.password)
         const token = await user.generateAuthToken()
-        res.send({ user, token })
+        req.session.authToken= token
+        if(req.query.token && req.query.token === 'Y'){res.send({ user, token })}
+        else {res.status(204).send()}
+        
     }catch(e){ErrorHandler.handleError(e,res)}
 })
 
-router.put("/users/logout", MiddleWare.auth, async(req,res)=>{
+router.delete("/users/logout", MiddleWare.auth, async(req,res)=>{
     try{
         await req.user.removeToken(req.token)
-
+        req.session.destroy();
         res.status(204).send()
 
+    }catch(e){ErrorHandler.handleError(e,res)}
+})
+
+router.delete("/users/logoutAll", MiddleWare.auth, async(req,res)=>{
+    try{
+        await req.user.removeAllToken()
+        req.session.destroy();
+        res.status(204).send()
     }catch(e){ErrorHandler.handleError(e,res)}
 })
 

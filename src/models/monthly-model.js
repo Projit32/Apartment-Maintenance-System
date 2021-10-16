@@ -129,6 +129,17 @@ monthlySchema.methods.formatExpensesOurgoingData=function(){
     return data
 }
 
+monthlySchema.methods.formatEstimatesOurgoingData=function(){
+  data=[]
+  this.MONTHLY_EST.forEach((element)=>{
+    data.push({
+      itemName: element.ITEM,
+      itemPrice:element.Price
+    })
+  })
+  return data
+}
+
 
 monthlySchema.statics.getDataforMonth = async (timeFilter)=>{
     const data = await MonthlyData.findOne(timeFilter)
@@ -136,10 +147,15 @@ monthlySchema.statics.getDataforMonth = async (timeFilter)=>{
     return data
 }
 
-monthlySchema.statics.getUniqueMonthAndYear = async ()=>{
-  const months = await MonthlyData.find({}).distinct('MONTH')
+monthlySchema.statics.getUniqueMonthByYear = async (YEAR)=>{
+  const months = await MonthlyData.find({YEAR}).distinct('MONTH')
+  return {months }
+}
+
+
+monthlySchema.statics.getUniqueYear = async ()=>{
   const years = await MonthlyData.find({}).distinct('YEAR')
-  return {months, years}
+  return {years}
 }
 
 

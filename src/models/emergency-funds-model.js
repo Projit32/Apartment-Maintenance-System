@@ -27,7 +27,7 @@ const fundSchema= new mongoose.Schema({
 
 fundSchema.methods.toJSON= function () {
     outgoingData={
-        flatNumber: this.FLAT_NUM,
+        flatNumber: this.FLT_NUM,
         totalSqFtArea: this.FLT_TLT_AREA,
         superBuildUp: this.SPR_BLD_FACTOR,
         carpetSqFtArea: this.CRPT_AREA,
