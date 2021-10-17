@@ -37,13 +37,20 @@
         width: 80%; margin:0 auto;
       }
 
-    </style>
-    
+      .list-length{
+        width:50%;
+      }
 
-    <link href="features.css" rel="stylesheet">
+      .badge-margin{
+        margin-right: 2%;
+      }
+
+    </style>
     
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
+    <link href="heroes.css" rel="stylesheet">
+    <link href="features.css" rel="stylesheet">
   </head>
   <body>
     
@@ -83,96 +90,85 @@
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold">Monthly Data</h1>
       <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-      Select the Month : <select class="js-example-basic-single btn" id="availableMonths" name="month" style="width: 25%;"></select><br><br>
+      <p class="fs-5">Select the Month : </p> <select class="js-example-basic-single btn" id="availableMonths" name="month" style="width: 25%;"></select><br><br>
       <button class="btn btn-primary btn-lg" type="button" id="FetchDetails">Load Data</button>
     </div>
   </div>
 
+    <div class="b-example-divider"></div>
+
+    <div class="bg-dark text-secondary px-4 py-5 text-center">
+      <div class="py-5">
+        <h1 class="display-5 fw-bold text-white">Monthly Estimates, Expense & Summary </h1>
+        <div class="col-lg-10 mx-auto">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card bg-success text-white">
+                <div class="card-body" >
+                  <h5 class="card-title">Estimates & Expenses</h5>
+                  <div id="estExp">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card bg-warning text-white">
+                <div class="card-body">
+                  <h5 class="card-title">Summary</h5>
+                  <div id="summary">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="b-example-divider"></div>
+
+
+
   <!--TEXT-->
-  <figure class="text-center">
-    <blockquote class="blockquote">
-      <p>Flat-wise Data</p>
-    </blockquote>
-  </figure>
-
-  <div class="accordion div-alignments" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Accordion Item #1
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Accordion Item #2
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Accordion Item #4
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-  </div>
-
   <figure class="text-center">
     <blockquote class="blockquote">
       <p>Owner-wise Data</p>
     </blockquote>
   </figure>
 
+  <div class="accordion div-alignments p-3" id="ownerwiseData">
+  </div>
+
+  <div class="b-example-divider"></div>
+
+  <figure class="text-center">
+    <blockquote class="blockquote">
+      <p>Flat-wise Data</p>
+    </blockquote>
+  </figure>
+
   <div class="div-alignments">
-    <table class="table">
-      <tr>
-        <td class="table-primary">...</td>
-        <td class="table-secondary">...</td>
-        <td class="table-success">...</td>
-        <td class="table-danger">...</td>
-        <td class="table-warning">...</td>
-        <td class="table-info">...</td>
-        <td class="table-light">...</td>
-        <td class="table-dark">...</td>
-      </tr>
+    <table class="table table-dark table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Flat Number</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Flags</th>
+        </tr>
+      </thead>
+      <tbody id="flatwiseData">
+        
+      </tbody>
     </table>
   </div>
 
-  
+  <div class="b-example-divider"></div>
 
   <!-- FOOTER -->
   <footer class="container">
     <p>&copy; 2021 Roopvilla Project</p>
-    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
   </footer>
 </main>
 
@@ -240,22 +236,119 @@
 
             //call for get estimates
             clientCallGET("/months/estimates?monthNumber="+monthNumber+"&year="+new Date().getFullYear(), function(response){
-              console.log("Estimates :",response);
+              $('#estExp').html("");
+
+              response.data.forEach((element)=>{
+                const template = `<ul class="list-group list-group-horizontal">
+                                  <li class="list-group-item list-length list-group-item-success">${element.itemName}</li>
+                                  <li class="list-group-item list-length list-group-item-success">${element.itemPrice}</li>
+                                </ul>`;
+                $('#estExp').append(template);
+              });
             })
 
-            //call for get expenses
-            clientCallGET("/months/expenses?monthNumber="+monthNumber+"&year="+new Date().getFullYear(), function(response){
-              console.log("Expenses :",response);
+            //call for get summary
+            clientCallGET("/months/summary?monthNumber="+monthNumber+"&year="+new Date().getFullYear(), function(response){
+              $('#summary').html("");
+
+              const template = `<ul class="list-group list-group-horizontal">
+                                  <li class="list-group-item list-length list-group-item-warning">Monthly Accumulaton</li>
+                                  <li class="list-group-item list-length list-group-item-warning">${response.data.monthlyAccumulation}</li>
+                                </ul>
+                                <ul class="list-group list-group-horizontal">
+                                  <li class="list-group-item list-length list-group-item-warning">Monthly Expenses</li>
+                                  <li class="list-group-item list-length list-group-item-warning">${response.data.monthlyExpense}</li>
+                                </ul>
+                                <ul class="list-group list-group-horizontal">
+                                  <li class="list-group-item list-length list-group-item-warning">Balance</li>
+                                  <li class="list-group-item list-length list-group-item-warning">${response.data.balance}</li>
+                                </ul>`;
+              
+              $('#summary').html(template);
             })
 
             //call for flatwise data
             clientCallGET("/months/flatwiseData?monthNumber="+monthNumber+"&year="+new Date().getFullYear(), function(response){
-              console.log("FlatWise :",response);
+              $("#flatwiseData").html("");
+              response.data.forEach((element)=>{
+                let flags = '';
+                if(element.defaulterFlag === true) {
+                  flags+='<span class="badge rounded-pill bg-danger badge-margin">Defaulted</span>';
+                }
+                if(element.unsoldFlag === true)
+                {
+                  flags+='<span class="badge rounded-pill bg-info text-dark badge-margin">Unsold</span>';
+                }
+                if(element.notPayingFlag === true)
+                {
+                  flags+='<span class="badge rounded-pill bg-warning text-dark badge-margin">Not Paying</span>';
+                }
+
+                const template= `<tr>
+                                  <th scope="row">${element.flatNumber}</th>
+                                  <td>${element.amount}</td>
+                                  <td>${flags}</td>
+                                </tr>`;
+                
+                $("#flatwiseData").append(template);
+              });
+
             })
 
             //call for ownerwise data
             clientCallGET("/months/ownerWiseData?monthNumber="+monthNumber+"&year="+new Date().getFullYear(), function(response){
-              console.log("OwnerWise :",response);
+              $("#ownerwiseData").html("");
+                let count = 1;
+                response.data.forEach((element)=>{
+                  const id="#ownerwiseData";
+                  const headingID = "heading"+count;
+                  const collapseID = "collapse"+count;
+
+                  let flats = "";
+                  element.flatsAquired.forEach((flt)=>{
+                    flats+=`<span class="badge bg-primary badge-margin">${flt}</span>`;
+                  });
+
+
+                  const template = `
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="${headingID}">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"  aria-expanded="false" data-bs-target="#${collapseID}"  aria-controls="${collapseID}">
+                        ${element.Owner}
+                      </button>
+                    </h2>
+                    <div id="${collapseID}" class="accordion-collapse collapse" aria-labelledby="${headingID}" data-bs-parent="${id}">
+                      <div class="accordion-body">
+                        <ul class="list-group list-group-horizontal">
+                          <li class="list-group-item list-length list-group-item-secondary">Flats Aquired</li>
+                          <li class="list-group-item list-length list-group-item-secondary">${flats}</li>
+                        </ul>
+                        <ul class="list-group list-group-horizontal">
+                          <li class="list-group-item list-length list-group-item-secondary">Rate Per Flat</li>
+                          <li class="list-group-item list-length list-group-item-secondary">${element.ratePerFlat}</li>
+                        </ul>
+                        <ul class="list-group list-group-horizontal">
+                          <li class="list-group-item list-length list-group-item-secondary">Total Rate</li>
+                          <li class="list-group-item list-length list-group-item-secondary">${element.rateTotal}</li>
+                        </ul>
+                        <ul class="list-group list-group-horizontal">
+                          <li class="list-group-item list-length list-group-item-secondary">EF Amount</li>
+                          <li class="list-group-item list-length list-group-item-secondary">${element.emergencyFundAmount}</li>
+                        </ul>
+                        <ul class="list-group list-group-horizontal">
+                          <li class="list-group-item list-length list-group-item-secondary">Grand Total</li>
+                          <li class="list-group-item list-length list-group-item-secondary">${element.grandTotalPayable}</li>
+                        </ul>
+                        <ul class="list-group list-group-horizontal">
+                          <li class="list-group-item list-length list-group-item-secondary">Payment Received</li>
+                          <li class="list-group-item list-length list-group-item-secondary">${element.paymentReceivedFlag === true ? '<span class="badge bg-success">YES</span>' : '<span class="badge bg-danger">NO</span>'}</li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>`;
+                  $(id).append(template);
+                  count++;
+                });
             })
 
           });

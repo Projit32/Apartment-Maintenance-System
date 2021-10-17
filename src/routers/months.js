@@ -84,7 +84,7 @@ router.get('/months/estimates', MiddleWare.auth, async (req, res)=>{
 
 })
 
-router.get('/months/expenses', MiddleWare.auth, async (req, res)=>{
+router.get('/months/summary', MiddleWare.auth, async (req, res)=>{
 
     monthFilter={}
     try{

@@ -33,7 +33,9 @@
           <form id="loginForm">
             <img class="mb-4" src="https://proapplication.000webhostapp.com/roopvilla_logo.png" alt="" width="150" height="70">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-        
+            <div class="alert alert-danger" id="invalidCred" role="alert">
+              Username or Password is incorrect!
+            </div>
             <div class="form-floating">
               <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
               <label for="floatingInput">Email address</label>
@@ -53,6 +55,9 @@
 
         <script>
             $(function(){
+
+              $("#invalidCred").hide();
+
                 $("#loginForm").submit(function(event){
                     const data = $(this).serializeArray();
                     let reqData = {}
@@ -63,6 +68,11 @@
                     client.onload = function (){
                         if (this.status == 204) {
                             window.location="/home"
+                        }
+                        else if(this.status == 401)
+                        {
+                          $('#loginForm').trigger("reset");
+                          $('#invalidCred').show(250);
                         }
                         else{
                             console.error({
