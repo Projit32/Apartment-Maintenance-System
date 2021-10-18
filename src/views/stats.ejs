@@ -35,37 +35,9 @@
   </head>
   <body>
     
-<header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand nav-item bg-dark" href="#">Roopvilla Project</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link" href="/home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/monthly">Monthly Data</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Statistics</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/mailer">Mailer</a>
-        </ul>
-        <div class="d-flex">
-          <span class="nav-link nav-item" style="font-weight: bold;">Welcome, <%= user.OWNER_NAME%></span>
-          <button id="logout" class="btn btn-outline-success nav-item">Logout</button>
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
+    <%- include('includes/navigation.ejs') %>
 
-<div class="container-fluid" style="margin-top: 5%;">
+<div class="container-fluid py-5" style="margin-top: 3%;">
   <div class="row">
 
     <main class="ms-sm-auto px-md-4">
@@ -100,30 +72,12 @@
   </div>
 </div>
 
+<%- include('includes/footer.ejs') %>
+
 
     <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
     <script src="emergencyFunds.js"></script>
-    <script>
-      $(function(){
-          $('#logout').click(function(event){
-              const client = new XMLHttpRequest();
-              client.onload = function (){
-                      if (this.status == 204) {
-                          window.location="/"
-                      }
-                      else{
-                          console.error({
-                              code : this.status,
-                              details : JSON.parse(this.responseText)
-                          })
-                      }
-                  }
-              client.open("DELETE", "/users/logout",true);
-              client.send();
-              event.preventDefault();
-          });
-      });
-  </script>
+    <script src="common.js"></script>
   </body>
 </html>

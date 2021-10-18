@@ -10,25 +10,29 @@ router.get("/", async(req, res)=>{
 
 router.get("/home", MiddleWare.auth, async(req, res)=>{
     res.render('home', {
-        user : req.user
+        user : req.user,
+        path: "home"
     })
 })
 
 router.get("/stats", MiddleWare.auth, async(req, res)=>{
     res.render('stats', {
-        user : req.user
+        user : req.user,
+        path:"stats"
     })
 })
 
 router.get("/mailer", MiddleWare.auth, async(req, res)=>{
     res.render('mailer', {
-        user : req.user
+        user : req.user,
+        path:"mailer"
     })
 })
 
 router.get("/monthly", MiddleWare.auth, async(req, res)=>{
     res.render('monthly', {
-        user : req.user
+        user : req.user,
+        path: "monthly"
     })
 })
 module.exports= router

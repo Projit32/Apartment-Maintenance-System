@@ -38,35 +38,7 @@
   </head>
   <body>
     
-<header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Roopvilla Project</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/monthly">Monthly Data</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/stats">Statistics</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/mailer">Mailer</a>
-        </ul>
-        <div class="d-flex">
-          <span class="nav-link nav-item" style="font-weight: bold;">Welcome, <%= user.OWNER_NAME%></span>
-          <button id="logout" class="btn btn-outline-success nav-item">Logout</button>
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
+<%- include('includes/navigation.ejs') %>
 
 <main>
 
@@ -131,7 +103,7 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="project-launch.png" height="140" width="110"/></svg>
+        <svg class="bd-placeholder-img" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="project-launch.png" height="140" width="140"/></svg>
 
         <h2>We're Finally Live</h2>
         <p>Roopvilla Maintenance Project is finally live to give the occupants some insighful details of the maintenance structure.</p>
@@ -139,18 +111,20 @@
 
 
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="automation.png" height="130" width="140"/></svg>
+        <svg class="bd-placeholder-img" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="automation.png" height="140" width="140"/></svg>
 
         <h2>We're Completely Automated</h2>
-        <p>The entire maintanence system is fully automated with latest technology offered by the web development inductry, this minimum human needed for completing a task and reducing the risk of error, and also providing an opportunity to expand the capabilities and scalibility of this system</p>
+        <p>The entire maintanence system is fully automated with latest technology offered by the web development industry, this minimizes human need for completing a task and reducing the risk of errors, and also providing an opportunity to expand the capabilities and scalibility of this system</p>
       </div><!-- /.col-lg-4 -->
 
 
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="winner.png" height="140" width="140"/></svg>
+        <svg class="bd-placeholder-img" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="web-development.png" height="140" width="140"/></svg>
 
-        <h2>Built by the Members, For the Members</h2>
-        <p>The members of the apartment are the foundation of this maintenance project. We collectively take decision and the set the direction of our system, collectively.</p>
+        <h2>Check out the Tech Stack</h2>
+        <p>You can collaborateand and contribute to this system. Chekout the tech stack used and provide your suggestion.</p>
+
+        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
@@ -177,6 +151,7 @@
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading">We're <span class="text-muted">Completely Transparent.</span></h2>
         <p class="lead">Memebers have the complete right to view and report what are paying for. There are no hidden expenditures or back door transactions. We aim to provide information with authenticity and integrety.</p>
+        <p><a class="btn btn-secondary" href="/monthly">View details &raquo;</a></p>
       </div>
       <div class="col-md-5 order-md-1">
         <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="transparency.png" height="250" width="250" class="responsive"/></svg>
@@ -205,37 +180,11 @@
 
 
   <!-- FOOTER -->
-  <footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2021 Roopvilla Project</p>
-    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-  </footer>
+  <%- include('includes/footer.ejs') %>
 </main>
 
 
     <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(function(){
-            $('#logout').click(function(event){
-                const client = new XMLHttpRequest();
-                client.onload = function (){
-                        if (this.status == 204) {
-                            window.location="/"
-                        }
-                        else{
-                            console.error({
-                                code : this.status,
-                                details : JSON.parse(this.responseText)
-                            })
-                        }
-                    }
-                client.open("DELETE", "/users/logout",true);
-                client.send();
-                event.preventDefault();
-            });
-        });
-    </script>
-
-      
+    <script src="common.js"></script> 
   </body>
 </html>
