@@ -35,4 +35,11 @@ router.get("/monthly", MiddleWare.auth, async(req, res)=>{
         path: "monthly"
     })
 })
+
+router.get("/tech", MiddleWare.auth, async(req, res)=>{
+    res.render('tech', {
+        user : req.user,
+        path: "tech"
+    })
+})
 module.exports= router

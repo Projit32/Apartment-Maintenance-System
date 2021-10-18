@@ -18,6 +18,10 @@
             </li>
             <li class="nav-item">
               <a class="nav-link <%= path === 'mailer' ? 'active' : '' %>" <%= path === 'mailer' ? 'aria-current="page"' : '' %> href="/mailer">Mailer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= path === 'tech' ? 'active' : '' %>" <%= path === 'tech' ? 'aria-current="page"' : '' %> href="/tech">Tech Stack</a>
+            </li>
           </ul>
           <div class="d-flex">
             <span class="nav-link nav-item" style="font-weight: bold;">Welcome, <%= user.OWNER_NAME%></span>
