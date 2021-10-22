@@ -183,6 +183,7 @@
             Request Mail
           </button>
           <div class="lds-ellipsis" id="MELLoader" style="margin-left: 20px;"><div></div><div></div><div></div><div></div></div>
+          <br>
         </div>
       </div>
       <div class="col d-flex align-items-start">
@@ -210,6 +211,14 @@
         </div>
       </div>
     </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="errorMessage">
+      Something Went Wrong. We'll check it soon. 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="successMessage">
+      Mail sent successfully. 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
   </div>
   <div class="b-example-divider"></div>
 
@@ -224,6 +233,8 @@
         $(function(){
 
           $('#MELLoader').hide();
+          $('#errorMessage').hide();
+          $('#successMessage').hide();
 
           $('#monthlyExpenseLedger').click(function(event){
             let reqData={
@@ -237,14 +248,12 @@
             mexplClient.onload=function(){
               if (this.status == 201) {
                 console.log("Success");
+                $('#successMessage').show(200);
               }
               else{
-                    console.error({
-                        code : this.status,
-                        details : JSON.parse(this.responseText)
-                    })
+                    $("#errorMessage").show(200);
                   }
-                  $('#MELLoader').hide(500);
+                  $('#MELLoader').hide(200); 
             };
             mexplClient.open("POST", "/mails/SendEstimatesMail",true);
             mexplClient.setRequestHeader("Content-type","application/json");
