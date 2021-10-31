@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home - Roopvilla Project</title>
+    <%- include('includes/header.ejs') %>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
@@ -42,50 +43,50 @@
 
 <main>
 
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" >
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active" style="background-image: url('https://i.pinimg.com/originals/30/45/12/304512deb5caefbf2857c01acb5d5e56.jpg'); background-size:100% 100%;  background-position: center;
+      <div class="carousel-item active" style="background-image: url('corousel/outdoor1.jpg'); background-size:100% 100%;  background-position: center;
   background-repeat: no-repeat;">
-
-        <div class="container">
-          <div class="carousel-caption text-start" >
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-          </div>
-        </div>
       </div>
 
 
-      <div class="carousel-item" style="background-image: url('https://i.pinimg.com/originals/f8/e8/d9/f8e8d9a9f1e26b087cceb94d36e96d88.jpg'); background-size:100% 100%;  background-position: center;
+      <div class="carousel-item" style="background-image: url('corousel/front1.jpg'); background-size:100% 100%;  background-position: center;
   background-repeat: no-repeat;">
-
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-          </div>
-        </div>
       </div>
 
 
-      <div class="carousel-item" style="background-image: url('https://d1hr1zgkeel0t6.cloudfront.net/media/apartments_media/082e6bb8-d65c-4319-aed9-3_10863939609.jpg'); background-size:100% 100%;  background-position: center;
+      <div class="carousel-item" style="background-image: url('corousel/balcony2.jpg'); background-size:100% 100%;  background-position: center;
   background-repeat: no-repeat;">
-
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-          </div>
-        </div>
       </div>
+
+      <div class="carousel-item" style="background-image: url('corousel/balcony1.jpg'); background-size:100% 100%;  background-position: center;
+  background-repeat: no-repeat;">
+      </div>
+
+      <div class="carousel-item" style="background-image: url('corousel/interior1.jpg'); background-size:100% 100%;  background-position: center;
+  background-repeat: no-repeat;">
+      </div>
+
+      <div class="carousel-item" style="background-image: url('corousel/roof1.jpg'); background-size:100% 100%;  background-position: center;
+  background-repeat: no-repeat;">
+      </div>
+      
+      <div class="carousel-item" style="background-image: url('corousel/window1.jpg'); background-size:100% 100%;  background-position: center;
+  background-repeat: no-repeat;">
+      </div>
+
+
+
+
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>

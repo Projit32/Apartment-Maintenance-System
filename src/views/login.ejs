@@ -7,7 +7,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
         <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
         <title>Login - Roopvilla Project</title>
-        
+        <%- include('includes/header.ejs') %>
         <style>
             .bd-placeholder-img {
               font-size: 1.125rem;
@@ -31,7 +31,7 @@
     
         <main class="form-signin">
           <form id="loginForm">
-            <img class="mb-4" src="https://proapplication.000webhostapp.com/roopvilla_logo.png" alt="" width="150" height="70">
+            <img class="mb-4" src="login_logo.png" alt="logo" width="300">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
             <div class="alert alert-danger" id="invalidCred" role="alert">
               Username or Password is incorrect!
