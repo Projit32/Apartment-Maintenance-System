@@ -19,12 +19,12 @@ const auth = async (req, res, next) => {
             token= req.header('Authorization').replace('Bearer ', '')
         }
         else{
-            throw Exceptions.AuthException("MISSING_AUTH", "Please provide Authentication")
+            throw Exceptions.AuthException("MISSING_AUTH", "Please provide Authentication or login at : http://roopvilla-project.herokuapp.com/")
         }
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
         const user = await User.findOne({ _id: decoded.owner, 'TOKENS': token })
         if (!user) {
-            throw Exceptions.AuthException("UNAUTHORIZED", "User is not Authenticated")
+            throw Exceptions.AuthException("UNAUTHORIZED", "User is not Authenticated, please login at : http://roopvilla-project.herokuapp.com/")
         }
 
         req.token = token

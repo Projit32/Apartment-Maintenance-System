@@ -4,6 +4,7 @@ const ErrorHandler = require('../utils/error-handler')
 const LedgerData = require('../models/ledger-model')
 const UserData = require('../models/user-model')
 const MiddleWare = require('../middleware/auth')
+const UserInfoService = require('../service/user-info')
 
 const router = new express.Router()
 
@@ -19,7 +20,15 @@ router.post("/mails/SendEstimatesMail", MiddleWare.auth, async(req, res)=>{
             generated: new Date(),
             expData
         }
-        Mailer.sendMail(mailData,res)
+        Mailer.generateMonthlyExpenseMail(mailData,res)
+    }
+    catch(e) {ErrorHandler.handleError(e,res)}
+})
+
+router.get("/mails/sendPersonalDetailsMail", MiddleWare.auth, async(req, res)=>{
+    try{
+        data = await UserInfoService.generateUserInfoMailData(req.user)
+        Mailer.generatePersonalDataMail(data,res)
     }
     catch(e) {ErrorHandler.handleError(e,res)}
 })

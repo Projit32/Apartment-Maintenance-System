@@ -55,10 +55,10 @@ userSchema.methods.generateAuthToken = async function () {
 
 userSchema.statics.findByCredentials = async(email, password)=>{
   const user = await User.findOne({EMAILS:email})
-  if(!user) throw Exceptions.FailedLoginException("INV_CRED", 'Unable to login')
+  if(!user) throw Exceptions.FailedLoginException("INV_CRED", 'Incorrect Credentials')
   
   const isMatch = await bcrypt.compare(password, user.ACCESS_KEY)
-  if (!isMatch) throw Exceptions.FailedLoginException("INV_CRED", 'Unable to login')
+  if (!isMatch) throw Exceptions.FailedLoginException("INV_CRED", 'Incorrect Credentials')
 
   return user
 }

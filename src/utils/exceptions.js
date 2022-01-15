@@ -18,5 +18,9 @@ const AuthException = (errCode,errMsg)=>{
     return {errCode,errMsg,status:401}
 }
 
+const ValidationException = (errCode,errMsg)=>{
+    return {errCode,errMsg,status:400}
+}
 
-module.exports = {QueryException,NoDataException,PasswordException,FailedLoginException,AuthException}
+
+module.exports = {QueryException,NoDataException,PasswordException,FailedLoginException,AuthException,ValidationException}

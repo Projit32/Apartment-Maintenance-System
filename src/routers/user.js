@@ -8,15 +8,34 @@ const router = new express.Router();
 
 router.put("/users/setPassword",MiddleWare.auth ,async (req, res) => {
   try {
+    if(req.body.current)
+    {
+      await User.findByCredentials(
+        req.user.EMAILS[0],
+        req.body.current
+      );
+    }else {
+      throw Exceptions.QueryException(
+        "PASSWORD_MISSING",
+        "Please provide the current password"
+      );
+    }
     if (req.body.password) {
-      req.user.ACCESS_KEY = req.body.password;
-      req.user.save();
-
-      res.status(204).send();
+      let re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[\]:;<>,.?\/~_+\-=|]).{8,}$/;
+      if (re.test(req.body.password)) {
+        req.user.ACCESS_KEY = req.body.password;
+        req.user.save();
+        res.status(204).send();
+      } else {
+        throw Exceptions.ValidationException(
+          "PASSWORD_VALIDATION_FAILED",
+          "Password doesn't matches the given criterias"
+        );
+      }
     } else {
       throw Exceptions.QueryException(
         "PASSWORD_MISSING",
-        "Please provide the password in proper field"
+        "Please provide the new password"
       );
     }
   } catch (e) {

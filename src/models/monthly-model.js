@@ -149,7 +149,7 @@ monthlySchema.statics.getDataforMonth = async (timeFilter)=>{
 
 monthlySchema.statics.getUniqueMonthByYear = async (YEAR)=>{
   const months = await MonthlyData.find({YEAR}).distinct('MONTH')
-  return {months }
+  return {months}
 }
 
 
