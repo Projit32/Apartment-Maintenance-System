@@ -17,10 +17,12 @@ const port = process.env.PORT
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+const maxAgeSession=(3600*1000)
+
 const store = new MongoDBSessionStore({
     uri: process.env.MONGODB_URL,
-    collection: 'sessions',
-    maxAge: Date.now() + (3600 * 1000)
+    collection: 'nsessions',
+    expires: maxAgeSession
 })
 
 app.use(
@@ -29,7 +31,10 @@ app.use(
         resave:false,
         saveUninitialized:false,
         store: store,
-        maxAge: Date.now() + (3600 * 1000)
+        cookie: { 
+            maxAge: maxAgeSession,
+            expires: new Date(Date.now() + maxAgeSession)
+         } 
     })
 )
 
@@ -42,7 +47,7 @@ app.use(mailRouter)
 app.use(userRouter)
 
 app.use((req, res, next) => {
-    res.status(404).send({ pageTitle: 'Page Not Found' })//.render('404', { pageTitle: 'Page Not Found' });
+    res.status(404).send({ pageTitle: 'Page Not Found' })
 });
 
 app.listen(port, () => {

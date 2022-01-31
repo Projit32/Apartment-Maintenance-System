@@ -58,7 +58,7 @@ const createPersonalDataMailTemplate=(mailData)=>{
                       <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
                           <tr>
                               <td align="center" valign="top" style="font-family: Times New Roman, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
-                                  <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">Personal Information Review</h1>
+                                  <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">Personal Information and Payment History</h1>
                               </td>
                           </tr>
                       </table>
