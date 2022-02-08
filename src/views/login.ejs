@@ -28,7 +28,7 @@
               <label for="floatingPassword">Password</label>
             </div>
         
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" id="loginSubmit">Sign in</button>
           </form>
           <br>
           <%- include('includes/footer.ejs') %>
@@ -43,6 +43,12 @@
               $("#invalidCred").hide();
 
                 $("#loginForm").submit(function(event){
+                  event.preventDefault();
+                    const loadButton="#loginSubmit";
+                    defaultContent= $(loadButton).html();
+                    toggleLoadingButton(loadButton, true, undefined);
+
+
                     const data = $(this).serializeArray();
                     let reqData = {}
                     data.forEach((element)=>{
@@ -50,6 +56,7 @@
                     });
                     const client = new XMLHttpRequest();
                     client.onload = function (){
+                        toggleLoadingButton(loadButton, false, defaultContent);
                         if (this.status == 204) {
                             window.location="/home"
                         }
@@ -72,7 +79,6 @@
                     client.open("POST", "/users/login",true);
                     client.setRequestHeader("Content-type","application/json");
                     client.send(JSON.stringify(reqData));
-                    event.preventDefault();
                 });
             });
 
@@ -80,6 +86,15 @@
               if(!message){ message ="Something went wrong. We'll check soon"}
               $("#invalidCred").html(message+'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>');
               $("#invalidCred").show(200);
+            }
+
+            function toggleLoadingButton(id, load, defaultText){
+                const template=`
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+                `;
+                $(id).prop('disabled', load);
+                $(id).html(load? template : defaultText); 
             }
 
         </script>  

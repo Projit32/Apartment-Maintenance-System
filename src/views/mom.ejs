@@ -18,7 +18,7 @@
                   <input type="date" class="form-control" name='getFromDate' required>
                   <span class="input-group-text">TO</span>
                   <input type="date" class="form-control" name='getToDate' required>
-                  <button class="btn btn-outline-primary" type="submit">Search Miunites of Meetings</button>
+                  <button class="btn btn-outline-primary" type="submit" id="searchMom" >Search Miunites of Meetings</button>
               </div>
           </form>
           <div class="my-3 d-flex" id="minuitesList">
@@ -96,7 +96,7 @@
               });
               template+=`</tbody></table>`;
               target.html(template);
-            });
+            }, "#searchMom");
           });
         })
 
@@ -127,19 +127,25 @@
         $('#momModal').modal('show'); 
       }
 
-      function APICall(method, url, data, callback){
-        //showLoading();
+      function APICall(method, url, data, callback, loadButton){
+        let defaultContent = undefined;
+        if(loadButton){
+          defaultContent= $(loadButton).html();
+          toggleLoadingButton(loadButton, true, undefined);
+        }
+        
         const successCodes=[200,201];
         const client = new XMLHttpRequest();
         client.onload = function (){
+            if(loadButton){
+              toggleLoadingButton(loadButton, false, defaultContent);
+            }
             if (successCodes.includes(this.status)) {
-              displayMssage(true,undefined);
               if(callback){
                 callback(JSON.parse(this.responseText));
               }
             }
             else if(this.status === 204){
-              displayMssage(true,undefined);
               if(callback){
                 callback();
               }
@@ -148,10 +154,9 @@
               try{
                 let response=JSON.parse(this.responseText)
                 console.log(response);
-                displayMssage(false,response.error);
               }
               catch(err){
-                displayMssage(false,undefined);
+
               }
             }
         }
@@ -165,26 +170,13 @@
         }
         
       }
-
-      function displayMssage(is_success,message){
-        if(is_success){
-          $("#message").html(`<b>${message? message : "Successfully Updated!"}</b><br>`);
-          $("#message").css("color","green");
-        }
-        else{
-          $("#message").html(`<b>${message? message : "Couldn't Update!"}</b><br>`);
-          $("#message").css("color","red");
-        }
-
-        $("#message").fadeTo(2000, 1).slideUp(1500, function() {
-          $("#message").hide();
-        });
-      }
-      function showLoading()
-      {
-        $("#message").css("color","blue");
-        $("#message").html(`<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>Loading...`);
-        $("#message").fadeTo(100, 0.4);
+      function toggleLoadingButton(id, load, defaultText){
+          const template=`
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+          `;
+          $(id).prop('disabled', load);
+          $(id).html(load? template : defaultText); 
       }
         
       </script>
