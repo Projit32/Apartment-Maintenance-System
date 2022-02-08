@@ -49,4 +49,10 @@ router.get("/password", MiddleWare.auth, async(req, res)=>{
         path: "password"
     })
 })
+router.get("/mom", MiddleWare.auth, async(req, res)=>{
+    res.render('mom', {
+        user : req.user,
+        path: "mom"
+    })
+})
 module.exports= router

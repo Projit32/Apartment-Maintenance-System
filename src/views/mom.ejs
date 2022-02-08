@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Minutes of Meetings - Roopvilla Project</title>
+        <%- include('includes/header.ejs') %>
+
+    </head>
+
+    <body>
+      <%- include('includes/navigation.ejs') %>
+      <main class="my-5 py-3">
+        <div class="p-3 rounded-3">
+          <form id="fetchMomForm" class="my-2">
+              <div class="input-group mx-auto" style="width: 50%;">
+                  <span class="input-group-text">From</span>
+                  <input type="date" class="form-control" name='getFromDate' required>
+                  <span class="input-group-text">TO</span>
+                  <input type="date" class="form-control" name='getToDate' required>
+                  <button class="btn btn-outline-primary" type="submit">Search Miunites of Meetings</button>
+              </div>
+          </form>
+          <div class="my-3 d-flex" id="minuitesList">
+      
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="momModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="momDateLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="momDateLabel"></h5>
+                </div>
+                <div class="modal-body" id="momData">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+        <%- include('includes/footer.ejs') %>
+      </main>
+        
+      <script>
+        let fetchedMoms= new Map();
+        $(function(){
+          //$("#message").hide();
+
+          //fetch Data
+          $("#fetchMomForm").submit(function(event){
+            event.preventDefault();
+            const data = $(this).serializeArray();
+            let formData = {}
+            data.forEach((element)=>{
+                formData[element.name]=element.value;
+            });
+            const from = new Date(formData['getFromDate']).toUTCString();
+            const to = new Date(formData['getToDate']).toUTCString();
+            console.log("Fetching");
+
+            APICall("GET", `/moms?startDate=${from}&endDate=${to}`,undefined, (data)=>{
+              fetchedMoms.clear();
+              let template =`
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Topics</th>
+                      <th scope="col">View</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+              `;
+              const target =$("#minuitesList").html("");
+              data['data'].forEach(element=>{
+                const now = Date.now()*Math.random();
+                fetchedMoms.set(now.toString(), element);
+                template+=`
+                    <tr>
+                      <td>${new Date(element.date).toUTCString()}</td>
+                      <td>${element.moms.length}</td>
+                      <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-primary btn-sm" value=${now} onclick="viewMom(this.value);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                `;
+              });
+              template+=`</tbody></table>`;
+              target.html(template);
+            });
+          });
+        })
+
+      function viewMom(id){
+        const data=fetchedMoms.get(id);
+        console.log(data['date']);
+        $("#momDateLabel").html(new Date(data.date).toUTCString());
+        let template =`
+        <ul class="list-group list-group-flush">`;
+        data['moms'].forEach(element=>{
+          
+          template+=`
+          <li class="list-group-item">
+            <figure>
+              <blockquote class="blockquote">
+                <p>${element.topic.replace('\n','<br>')}</p>
+              </blockquote>
+              <figcaption class="blockquote-footer">
+                <cite title="Source Title">${element.decision.replace('\n','<br>')}</cite>
+              </figcaption>
+            </figure>
+          </li>
+          `;
+        });
+
+        template+=`</ul>`;
+        $('#momData').html(template);
+        $('#momModal').modal('show'); 
+      }
+
+      function APICall(method, url, data, callback){
+        //showLoading();
+        const successCodes=[200,201];
+        const client = new XMLHttpRequest();
+        client.onload = function (){
+            if (successCodes.includes(this.status)) {
+              displayMssage(true,undefined);
+              if(callback){
+                callback(JSON.parse(this.responseText));
+              }
+            }
+            else if(this.status === 204){
+              displayMssage(true,undefined);
+              if(callback){
+                callback();
+              }
+            }
+            else{
+              try{
+                let response=JSON.parse(this.responseText)
+                console.log(response);
+                displayMssage(false,response.error);
+              }
+              catch(err){
+                displayMssage(false,undefined);
+              }
+            }
+        }
+        client.open(method,url,true);
+        if(data){
+          client.setRequestHeader("Content-type","application/json");
+          client.send(JSON.stringify(data));
+        }
+        else{
+          client.send();
+        }
+        
+      }
+
+      function displayMssage(is_success,message){
+        if(is_success){
+          $("#message").html(`<b>${message? message : "Successfully Updated!"}</b><br>`);
+          $("#message").css("color","green");
+        }
+        else{
+          $("#message").html(`<b>${message? message : "Couldn't Update!"}</b><br>`);
+          $("#message").css("color","red");
+        }
+
+        $("#message").fadeTo(2000, 1).slideUp(1500, function() {
+          $("#message").hide();
+        });
+      }
+      function showLoading()
+      {
+        $("#message").css("color","blue");
+        $("#message").html(`<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>Loading...`);
+        $("#message").fadeTo(100, 0.4);
+      }
+        
+      </script>
+
+      <%- include('includes/scripts.ejs') %>
+    </body>
+</html>
