@@ -16,8 +16,9 @@ const checkQueryParam=(req)=>{
 router.get("/moms", MiddleWare.auth, async (req, res) => {
   try {
     checkQueryParam(req)
-    const start = new Date(req.query.startDate).toUTCString()
-    const end =  new Date(req.query.endDate).toUTCString()
+    const start = new Date(req.query.startDate)
+    const end =  new Date(req.query.endDate)
+    if(start>end){throw Exceptions.ValidationException("DATE_INV", "Start Date cannot be later than End date!")}
     data=await Moms.findByStartandEndDates(start,end)
     res.send({data})
   } catch (e) {

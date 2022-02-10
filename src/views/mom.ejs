@@ -21,6 +21,9 @@
                   <button class="btn btn-outline-primary" type="submit" id="searchMom" >Search Miunites of Meetings</button>
               </div>
           </form>
+          <div class="m-auto-1 text-center" >
+            <span id="error" style="color: red;">Hello there</span>
+          </div>
           <div class="my-3 d-flex" id="minuitesList">
       
           </div>
@@ -44,9 +47,16 @@
       </main>
         
       <script>
+        function displayMssage(message){
+          $("#error").html(`<b>${message}</b><br>`);
+
+          $("#error").fadeTo(2500, 1).fadeOut(2500, function() {
+            $("#error").hide();
+          });
+        }
         let fetchedMoms= new Map();
         $(function(){
-          //$("#message").hide();
+          $("#error").hide();
 
           //fetch Data
           $("#fetchMomForm").submit(function(event){
@@ -145,19 +155,10 @@
                 callback(JSON.parse(this.responseText));
               }
             }
-            else if(this.status === 204){
-              if(callback){
-                callback();
-              }
-            }
             else{
-              try{
                 let response=JSON.parse(this.responseText)
                 console.log(response);
-              }
-              catch(err){
-
-              }
+                displayMssage(response.errMsg);
             }
         }
         client.open(method,url,true);
