@@ -58,7 +58,7 @@
                     client.onload = function (){
                         toggleLoadingButton(loadButton, false, defaultContent);
                         if (this.status == 204) {
-                            window.location="/home"
+                            window.location='<%= landing%>';
                         }
                         else if(this.status == 401)
                         {

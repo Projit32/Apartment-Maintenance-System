@@ -173,7 +173,7 @@ const createPersonalDataMailTemplate=(mailData)=>{
                       <tr>
                           <td align="center" style="font-family: Times New Roman, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
                               <h2 style="font-size: 24px; font-weight: 800; line-height: 30px; color: #ffffff; margin: 0;">
-                                  The monthly maintenance you have paid till date.
+                                  The payment history of the monthly maintenance for this year.
                               </h2>
                           </td>
                       </tr>

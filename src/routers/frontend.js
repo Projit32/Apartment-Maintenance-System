@@ -5,7 +5,11 @@ const MiddleWare = require('../middleware/auth')
 const router = new express.Router()
 
 router.get("/", async(req, res)=>{
-    res.render('login')
+    let landing='/home';
+    if(req.query.landing){
+      landing=`/${req.query.landing}`;
+    }
+    res.render('login', {landing})
 })
 
 router.get("/home", MiddleWare.auth, async(req, res)=>{

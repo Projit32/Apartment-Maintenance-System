@@ -1,7 +1,7 @@
 const MonthlyModel = require('../models/monthly-model')
 
 const generateUserInfoMailData = async(user)=>{
-    const monthlyData =await MonthlyModel.find({})
+    const monthlyData =await MonthlyModel.find({YEAR:new Date().getFullYear()})
     
     mailData={}
 

@@ -8,7 +8,7 @@ const auth = async (req, res, next) => {
         console.log("Session :",req.session)
         console.log("Headers :",req.headers)
 
-        var token="empty JWT"
+        let token="empty JWT"
         if(req.session.authToken)
         {
             console.log("From Sessions");
@@ -19,7 +19,8 @@ const auth = async (req, res, next) => {
             token= req.header('Authorization').replace('Bearer ', '')
         }
         else{
-            throw Exceptions.AuthException("MISSING_AUTH", "Please provide Authentication or login at : http://roopvilla-project.herokuapp.com/")
+            //throw Exceptions.AuthException("MISSING_AUTH", "Please provide Authentication or login at : http://roopvilla-project.herokuapp.com/")
+            res.redirect(`/?landing=${req.path.substring(1)}`);
         }
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
         const user = await User.findOne({ _id: decoded.owner, 'TOKENS': token })
