@@ -7,6 +7,7 @@ const mailRouter = require('./routers/mail')
 const userRouter = require('./routers/user')
 const frontendRouter = require('./routers/frontend')
 const momsRouter = require('./routers/moms')
+const featuresRouter = require('./routers/features')
 const session = require('express-session')
 const MongoDBSessionStore = require('connect-mongodb-session')(session)
 
@@ -47,6 +48,7 @@ app.use(statsRouter)
 app.use(mailRouter)
 app.use(userRouter)
 app.use(momsRouter)
+app.use(featuresRouter)
 
 app.use((req, res, next) => {
     res.status(404).send({ pageTitle: 'Page Not Found' })
