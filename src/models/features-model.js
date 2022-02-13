@@ -41,7 +41,7 @@ featureSchema.methods.toJSON = function(){
 
 
 featureSchema.statics.getAllFeatures = async()=>{
-  const data = await Features.find({})
+  const data = await Features.find({}).sort({DATE: 'desc'})
   let output=[]
   data.forEach(element => {
     output.push(element)

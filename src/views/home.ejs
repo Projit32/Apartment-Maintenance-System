@@ -151,8 +151,8 @@
         if(i%2==0){
           template+=`
           <div class="col-md-7">
-            <h2 class="featurette-heading">${element.heading} <span class="text-muted">${element.focused}</span></h2>
-            <p class="lead">${element.desc} ${isFeatureNew(element.date)? `<span class="badge bg-primary">New</span>`:""}</p>
+            <h2 class="featurette-heading">${element.heading} <span class="text-muted">${element.focused?element.focused:""}</span></h2>
+            <p class="lead">${element.desc}  ${isFeatureNew(element.date)? `<span class="badge rounded-pill bg-primary">New</span>`:""}</p>
             ${element.btn? `<p><a class="btn btn-secondary" href=${decodeURIComponent(element.btn)}>View details &raquo;</a></p>` : ``}
           </div>
           <div class="col-md-5">
@@ -163,8 +163,8 @@
         else{
           template+=`
           <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">${element.heading} <span class="text-muted">${element.focused}</span></h2>
-            <p class="lead">${element.desc} ${isFeatureNew(element.date)? `<span class="badge bg-primary">New</span>`:""}</p>
+            <h2 class="featurette-heading">${element.heading} <span class="text-muted">${element.focused?element.focused:""}</span></h2>
+            <p class="lead">${element.desc}  ${isFeatureNew(element.date)? `<span class="badge rounded-pill bg-primary">New</span>`:""}</p>
             ${element.btn? `<p><a class="btn btn-secondary" href=${decodeURIComponent(element.btn)}>View details &raquo;</a></p>` : ``}
           </div>
           <div class="col-md-5 order-md-1">
