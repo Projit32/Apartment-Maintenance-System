@@ -196,7 +196,7 @@
             <h2 class="featurette-heading">${element.heading} <span class="text-muted">${element.focused?element.focused:""}</span></h2>
             <p class="lead">${element.desc}  ${isFeatureNew(element.date)? `<span class="badge rounded-pill bg-primary">New</span>`:""}</p>
             <p>
-              <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+              <div class="btn-group" role="group" aria-label="Basic example">
                 <a class="btn btn-success" id='${button_id}' crossorigin="anonymous">Downlaod Announcement</a>
                 ${element.btn? `<a class="btn btn-secondary" href=${decodeURIComponent(element.btn)}>View Details &raquo;</a>` : ``}
               </div>
