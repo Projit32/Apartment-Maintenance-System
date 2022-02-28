@@ -20,6 +20,7 @@ const auth = async (req, res, next) => {
         }
         else{
             //throw Exceptions.AuthException("MISSING_AUTH", "Please provide Authentication or login at : http://roopvilla-project.herokuapp.com/")
+            req.session.destroy();
             res.redirect(`/?landing=${req.path.substring(1)}`);
         }
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
