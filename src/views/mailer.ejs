@@ -247,7 +247,7 @@
                   }
                   $('#MELLoader').hide(200); 
             };
-            mexplClient.open("POST", "/mails/SendEstimatesMail",true);
+            mexplClient.open("POST", "/mails/SendExpensesMail",true);
             mexplClient.setRequestHeader("Content-type","application/json");
             mexplClient.send(JSON.stringify(reqData));
             $('#MELLoader').show(500);

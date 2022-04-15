@@ -8,7 +8,7 @@ const UserInfoService = require('../service/user-info')
 
 const router = new express.Router()
 
-router.post("/mails/SendEstimatesMail", MiddleWare.auth, async(req, res)=>{
+router.post("/mails/SendExpensesMail", MiddleWare.auth, async(req, res)=>{
     try{
         const expData = await LedgerData.getMonthlyLedgerData(req.body.month,req.body.year)
         const userData = await UserData.getUserByFlat(req.body.flatNum)
